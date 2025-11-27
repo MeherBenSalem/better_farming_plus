@@ -1,5 +1,11 @@
 package tn.nightbeam.betterfarmingplus;
 
+import tn.nightbeam.betterfarmingplus.init.BetterFarmingPlusModTabs;
+import tn.nightbeam.betterfarmingplus.init.BetterFarmingPlusModMenus;
+import tn.nightbeam.betterfarmingplus.init.BetterFarmingPlusModItems;
+import tn.nightbeam.betterfarmingplus.init.BetterFarmingPlusModBlocks;
+import tn.nightbeam.betterfarmingplus.init.BetterFarmingPlusModBlockEntities;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -31,11 +37,19 @@ public class BetterFarmingPlusMod {
 	public static final Logger LOGGER = LogManager.getLogger(BetterFarmingPlusMod.class);
 	public static final String MODID = "better_farming_plus";
 
-	public BetterFarmingPlusMod() {
+	public BetterFarmingPlusMod(FMLJavaModLoadingContext context) {
 		// Start of user code block mod constructor
 		// End of user code block mod constructor
 		MinecraftForge.EVENT_BUS.register(this);
-		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		IEventBus bus = context.getModEventBus();
+
+		BetterFarmingPlusModBlocks.REGISTRY.register(bus);
+		BetterFarmingPlusModBlockEntities.REGISTRY.register(bus);
+		BetterFarmingPlusModItems.REGISTRY.register(bus);
+
+		BetterFarmingPlusModTabs.REGISTRY.register(bus);
+
+		BetterFarmingPlusModMenus.REGISTRY.register(bus);
 
 		// Start of user code block mod init
 		// End of user code block mod init
@@ -44,7 +58,7 @@ public class BetterFarmingPlusMod {
 	// Start of user code block mod methods
 	// End of user code block mod methods
 	private static final String PROTOCOL_VERSION = "1";
-	public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation(MODID, MODID), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
+	public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(ResourceLocation.fromNamespaceAndPath(MODID, MODID), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
 	private static int messageID = 0;
 
 	public static <T> void addNetworkMessage(Class<T> messageType, BiConsumer<T, FriendlyByteBuf> encoder, Function<FriendlyByteBuf, T> decoder, BiConsumer<T, Supplier<NetworkEvent.Context>> messageConsumer) {

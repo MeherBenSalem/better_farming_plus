@@ -4,9 +4,9 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="better_farming_plus"
-version="0.2.0"
+version="0.3.0"
 displayName="Better Farming ++"
-displayURL="https://meherbensalem.github.io"
+displayURL="https://www.nightbeam.cloud"
 logoFile="logo.png"
 credits="no credits"
 authors="NAIZO"
@@ -15,27 +15,44 @@ authors="NAIZO"
 # End of user code block mod configuration
 
 [[dependencies.better_farming_plus]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[1.20.1]"
-    ordering="AFTER"
-    side="BOTH"
-
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1]"
+ordering="AFTER"
+side="BOTH"
 
 [[dependencies.better_farming_plus]]
-    modId="jauml"
-    mandatory=false
-    versionRange="[0,)"
-    ordering="NONE"
-    side="BOTH"
+modId="jauml"
+mandatory=true
+versionRange="[0,)"
+ordering="NONE"
+side="BOTH"
 
-[[dependencies.memory_of_the_past]]
-    modId="jauml"
-    mandatory=true
-    versionRange="[1.0.3,)"
-    ordering="NONE"
-    side="BOTH"
+[[dependencies.better_farming_plus]]
+modId="jauml"
+mandatory=false
+versionRange="[0,)"
+ordering="NONE"
+side="BOTH"
 
 
 # Start of user code block dependencies configuration
+[[dependencies.memory_of_the_past]]
+modId="jauml"
+mandatory=true
+versionRange="[1.1.0,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.memory_of_the_past]]
+modId="jauml"
+mandatory=true
+versionRange="[1.1.0,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.memory_of_the_past]]
+modId="jauml"
+mandatory=true
+versionRange="[1.1.0,)"
+ordering="NONE"
+side="BOTH"
 # End of user code block dependencies configuration

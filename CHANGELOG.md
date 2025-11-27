@@ -1,4 +1,11 @@
 =============================================
+## Changelog 0.3.0
+=============================================
+
+- **Added Farmer Crate** a new block that automatically collects ready-to-harvest crops.
+- **Harvest Indicators** all vanilla crops now display indicators when they are ready to be harvested.
+
+=============================================
 ## Changelog 0.2.0
 =============================================
 
