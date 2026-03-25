@@ -34,5 +34,8 @@ public class CreateMainConfigProcedure {
 		if (!JaumlConfigLib.arrayKeyExists(directory, filename, "trampling_protection")) {
 			JaumlConfigLib.setBooleanValue(directory, filename, "trampling_protection", true);
 		}
+		if (!JaumlConfigLib.arrayKeyExists(directory, filename, "show_harvest_indicators")) {
+			JaumlConfigLib.setBooleanValue(directory, filename, "show_harvest_indicators", true);
+		}
 	}
 }

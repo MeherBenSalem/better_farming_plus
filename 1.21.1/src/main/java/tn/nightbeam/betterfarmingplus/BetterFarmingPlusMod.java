@@ -18,8 +18,6 @@ public class BetterFarmingPlusMod {
 	public static final String MODID = "better_farming_plus";
 
 	public BetterFarmingPlusMod(IEventBus bus) {
-		// Start of user code block mod constructor
-		// End of user code block mod constructor
 
 		BetterFarmingPlusModBlocks.REGISTRY.register(bus);
 		BetterFarmingPlusModBlockEntities.REGISTRY.register(bus);
@@ -29,10 +27,6 @@ public class BetterFarmingPlusMod {
 
 		BetterFarmingPlusModMenus.REGISTRY.register(bus);
 
-		// Start of user code block mod init
-		// End of user code block mod init
 	}
 
-	// Start of user code block mod methods
-	// End of user code block mod methods
 }
