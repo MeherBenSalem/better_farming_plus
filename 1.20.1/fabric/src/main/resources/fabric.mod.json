@@ -1,0 +1,35 @@
+{
+    "schemaVersion": 1,
+    "id": "better_farming_plus",
+    "version": "${version}",
+    "name": "${mod_name}",
+    "description": "${description}",
+    "authors": [
+        "NAIZO"
+    ],
+    "contact": {
+        "homepage": "https://www.nightbeam.cloud"
+    },
+    "license": "${license}",
+    "icon": "assets/better_farming_plus/textures/logo.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "tn.nightbeam.betterfarmingplus.BetterFarmingPlusModFabric"
+        ],
+        "client": [
+            "tn.nightbeam.betterfarmingplus.BetterFarmingPlusModFabricClient"
+        ]
+    },
+    "mixins": [
+        "better_farming_plus.mixins.json",
+        "better_farming_plus.fabric.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.14",
+        "fabric-api": "*",
+        "minecraft": "${minecraft_version}",
+        "java": ">=17",
+        "jauml": "*"
+    }
+}

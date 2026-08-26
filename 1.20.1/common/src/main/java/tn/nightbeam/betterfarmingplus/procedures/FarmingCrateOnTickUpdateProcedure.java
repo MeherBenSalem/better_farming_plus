@@ -1,0 +1,90 @@
+package tn.nightbeam.betterfarmingplus.procedures;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
+
+import java.util.Comparator;
+import java.util.List;
+
+public class FarmingCrateOnTickUpdateProcedure {
+	public static void execute(LevelAccessor world, double x, double y, double z) {
+		double sx = -3;
+		for (int index0 = 0; index0 < 6; index0++) {
+			double sz = -3;
+			for (int index1 = 0; index1 < 6; index1++) {
+				if ((world.getBlockState(BlockPos.containing(x + sx, y, z + sz))).getBlock() instanceof CropBlock) {
+					if (((world.getBlockState(BlockPos.containing(x + sx, y, z + sz))).getBlock().getStateDefinition().getProperty("age") instanceof IntegerProperty ageProperty
+							? (world.getBlockState(BlockPos.containing(x + sx, y, z + sz))).getValue(ageProperty)
+							: -1) == ((world.getBlockState(BlockPos.containing(x + sx, y, z + sz))).getBlock().getStateDefinition().getProperty("age") instanceof IntegerProperty maxProperty
+									? maxProperty.getPossibleValues().stream().max(Integer::compareTo).orElse(-1)
+									: -1)) {
+						world.setBlock(BlockPos.containing(x + sx, y + 1, z + sz), (world.getBlockState(BlockPos.containing(x + sx, y, z + sz))), 3);
+						{
+							BlockPos _pos = BlockPos.containing(x + sx, y + 1, z + sz);
+							Block.dropResources(world.getBlockState(_pos), world, BlockPos.containing(x + sx, y + 1, z + sz), null);
+							world.destroyBlock(_pos, false);
+						}
+						{
+							int _value = 0;
+							BlockPos _pos = BlockPos.containing(x + sx, y, z + sz);
+							BlockState _bs = world.getBlockState(_pos);
+							if (_bs.getBlock().getStateDefinition().getProperty("age") instanceof IntegerProperty integerProp && integerProp.getPossibleValues().contains(_value))
+								world.setBlock(_pos, _bs.setValue(integerProp, _value), 3);
+						}
+						{
+							final Vec3 _center = new Vec3(x, y, z);
+							List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(6 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
+							for (Entity entityiterator : _entfound) {
+								if (entityiterator instanceof ItemEntity) {
+									if (!entityiterator.level().isClientSide())
+										entityiterator.discard();
+									int insertCount = 1;
+									ItemStack stackToInsert = (entityiterator instanceof ItemEntity itemEnt ? itemEnt.getItem() : ItemStack.EMPTY).copy();
+									stackToInsert.setCount(1);
+									BlockPos pos = new BlockPos((int) (x), (int) (y), (int) (z));
+									BlockEntity entity = world.getBlockEntity(pos);
+									if (entity instanceof BaseContainerBlockEntity blockInv) {
+										int size = blockInv.getContainerSize();
+										for (int slot = 0; slot < size && insertCount > 0; slot++) {
+											ItemStack slotStack = blockInv.getItem(slot);
+											if (slotStack.isEmpty()) {
+												int amount = Math.min(insertCount, stackToInsert.getMaxStackSize());
+												ItemStack toInsert = stackToInsert.copy();
+												toInsert.setCount(amount);
+												blockInv.setItem(slot, toInsert);
+												insertCount -= amount;
+												continue;
+											}
+											if (ItemStack.isSameItemSameTags(slotStack, stackToInsert) && slotStack.getCount() < slotStack.getMaxStackSize()) {
+												int room = slotStack.getMaxStackSize() - slotStack.getCount();
+												int amountToAdd = Math.min(room, insertCount);
+												slotStack.grow(amountToAdd);
+												insertCount -= amountToAdd;
+											}
+										}
+										blockInv.setChanged();
+										if (world instanceof net.minecraft.world.level.Level level)
+											level.sendBlockUpdated(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
+									}
+								}
+							}
+						}
+					}
+				}
+				sz = sz + 1;
+			}
+			sx = sx + 1;
+		}
+	}
+}

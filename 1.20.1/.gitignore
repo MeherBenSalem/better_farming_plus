@@ -1,12 +1,23 @@
-better_farming_plus.mcreator
-.gradle
-.mcreator
-.eclipse
-.settings
+# eclipse
 bin
-elements
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea/*
+!.idea/scopes
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
 run
-runs
-mcreator.gradle
-/build/
-**/build

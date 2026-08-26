@@ -1,17 +1,7 @@
-# Dual-publish NightBeam mods/plugins to Modrinth + CurseForge on version tags.
-# Copy to each mod repo as: .github/workflows/publish.yml
+# Publish to Modrinth + CurseForge on version tags (v*.*.*).
 #
-# Org/repo secrets:
-#   MODRINTH_TOKEN
-#   CURSEFORGE_TOKEN
-#   CURSEFORGE_API_KEY
-#
-# Repo variables:
-#   MODRINTH_ID
-#   CURSEFORGE_ID
-#
-# Usage after a release build is ready:
-#   git tag v1.2.3 && git push --tags
+# Secrets: MODRINTH_TOKEN, CURSEFORGE_TOKEN, CURSEFORGE_API_KEY
+# Vars: MODRINTH_ID, CURSEFORGE_ID
 
 name: Publish
 
@@ -29,11 +19,12 @@ on:
         required: false
         default: "false"
 
+permissions:
+  contents: read
+
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - uses: actions/checkout@v4
 
@@ -53,26 +44,41 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "21"
+          java-version: |
+            17
+            21
 
       - uses: gradle/actions/setup-gradle@v4
 
-      - name: Build
+      - name: Build 1.20.1 (Fabric + Forge)
+        working-directory: 1.20.1
+        env:
+          JAVA_HOME: ${{ env.JAVA_HOME_17_X64 }}
         run: |
-          chmod +x gradlew 2>/dev/null || true
-          if [ -f gradlew ]; then ./gradlew build --no-daemon
-          else gradle build --no-daemon
-          fi
+          chmod +x gradlew
+          ./gradlew build --no-daemon
+
+      - name: Build 1.21.1 (Fabric + NeoForge)
+        working-directory: 1.21.1
+        env:
+          JAVA_HOME: ${{ env.JAVA_HOME_21_X64 }}
+        run: |
+          chmod +x gradlew
+          ./gradlew build --no-daemon
 
       - name: Find jars
         id: jars
         shell: bash
         run: |
-          mapfile -t JARS < <(find . -type f -path "*/build/libs/*.jar" \
-            ! -name "*-sources.jar" ! -name "*-javadoc.jar" \
-            ! -name "*-dev.jar" ! -name "*-dev-shadow.jar" | head -n 20)
+          mapfile -t JARS < <(find \
+            ./1.20.1/forge/build/libs ./1.20.1/fabric/build/libs \
+            ./1.21.1/neoforge/build/libs ./1.21.1/fabric/build/libs \
+            -type f -name '*.jar' \
+            ! -name '*-sources.jar' ! -name '*-javadoc.jar' \
+            ! -name '*-dev.jar' ! -name '*-dev-shadow.jar' \
+            ! -name '*-common-*.jar' 2>/dev/null | head -n 20)
           if [ ${#JARS[@]} -eq 0 ]; then
-            echo "No jars in build/libs" >&2
+            echo "No jars in loader build/libs" >&2
             exit 1
           fi
           printf '%s\n' "${JARS[@]}"
@@ -108,15 +114,18 @@ jobs:
           const gvs = new Set();
           for (const jar of jars) {
             const n = path.basename(jar).toLowerCase();
-            if (n.includes('neoforge')) loaders.add('neoforge');
+            if (n.includes('neoforge') || n.includes('1.21')) loaders.add('neoforge');
             else if (n.includes('fabric')) loaders.add('fabric');
             else if (n.includes('quilt')) loaders.add('quilt');
-            else if (n.includes('forge')) loaders.add('forge');
-            else loaders.add('fabric');
+            else if (n.includes('forge') || n.includes('1.20')) loaders.add('forge');
+            else loaders.add('forge');
             const m = n.match(/1\.\d+(?:\.\d+)?/);
             if (m) gvs.add(m[0]);
           }
-          if (!gvs.size) gvs.add('1.21.1');
+          if (!gvs.size) {
+            gvs.add('1.20.1');
+            gvs.add('1.21.1');
+          }
 
           (async () => {
             const fileParts = jars.map((_, i) => `file_${i}`);

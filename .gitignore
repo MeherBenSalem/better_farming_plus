@@ -1,0 +1,36 @@
+# Gradle / build
+.gradle/
+**/build/
+**/out/
+**/bin/
+**/repo/
+**/runs/
+**/run/
+**/run-data/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.launch
+.classpath
+.project
+.settings/
+.metadata/
+.eclipse/
+eclipse/
+
+# OS / local
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+
+# Generator / local tooling leftovers
+**/.mcreator/
+**/*.mcreator
+**/mcreator.gradle
+**/elements/
