@@ -6,8 +6,8 @@ A vanilla-friendly farming mod for Minecraft: right-click harvest that replants 
 sweep an area, a **Farming Crate** that harvests, replants and stores a whole field on its own, a **Sprinkler** that
 waters farmland and speeds crops up, no more trampled farmland, and a marker above every ripe crop.
 
-**1.0 "The Self-Running Farm"** rebuilds the mod: see the [1.0.0 notes](patchnotes/1.0.0.md) and the
-[design notes](docs/DESIGN-1.0.md).
+**1.0 "The Self-Running Farm"** rebuilds the mod: see the [1.0.0 notes](patchnotes/1.0.0.md), the
+[design notes](docs/DESIGN-1.0.md) and the [QA record](docs/QA-1.0.0.md) (47 in-game checks on all ten builds).
 
 ## Which jar do I download?
 
