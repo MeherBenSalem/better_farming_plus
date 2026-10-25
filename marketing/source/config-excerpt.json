@@ -1,0 +1,49 @@
+// Better Farming++. Changes apply after a restart.
+// Item and block lists accept ids (minecraft:iron_hoe) and tags (#minecraft:hoes).
+{
+  // Right-click a ripe crop to harvest it and replant it with a seed from its drops.
+  "harvest": {
+    "enabled": true,
+    // Harvest with an empty hand (one crop at a time).
+    "empty_hand": true,
+    // Items that harvest. Tools also sweep when listed in sweep_radius.
+    "tools": ["#minecraft:hoes"],
+    // Area harvested by a tool: 1 is 3x3, 2 is 5x5, 3 is 7x7. Tools not listed harvest one crop.
+    "sweep_radius": {
+      "minecraft:iron_hoe": 1,
+      "minecraft:golden_hoe": 1,
+      "minecraft:diamond_hoe": 2,
+      "minecraft:netherite_hoe": 3
+    },
+    // Sneak while harvesting to only take the crop you clicked.
+    "sneak_for_single": true,
+    // Durability a tool loses per crop harvested (0 to disable).
+    "tool_damage": 1
+  },
+
+  // "never": no player or mob tramples farmland. "with_tool": only someone holding a harvest tool
+  // is stopped (the 0.5.0 behaviour). "vanilla": trampling as usual.
+  "trampling": "never",
+
+  // The crate harvests ripe crops in a square of this radius around it (4 = 9x9), on its own layer
+  // and one above and below, every interval_ticks (20 = one second).
+  "farming_crate": {
+    "radius": 4,
+    "interval_ticks": 20
+  },
+
+  // Every interval_ticks the sprinkler waters the farmland in a square of this radius around it and
+  // gives each growing crop there growth_chance (0 to 1) of an extra growth tick. With needs_water it
+  // only works with water up to 4 blocks straight below it (hidden under the field) or beside it.
+  "sprinkler": {
+    "radius": 4,
+    "interval_ticks": 100,
+    "growth_chance": 0.15,
+    "needs_water": true,
+    "hydrate_farmland": true
+  },
+
+  // Add the "Harvest Indicators" resource pack (a marker above ripe crops). It can also be turned off
+  // in the Resource Packs screen.
+  "harvest_indicators": true
+}
