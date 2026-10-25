@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "tn.nightbeam.betterfarmingplus.fabric.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": ["FarmlandBlockMixin"],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

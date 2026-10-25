@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " c ",
+    "cbc",
+    " c "
+  ],
+  "key": {
+    "c": "minecraft:copper_ingot",
+    "b": "minecraft:bucket"
+  },
+  "result": {
+    "id": "better_farming_plus:sprinkler",
+    "count": 1
+  }
+}

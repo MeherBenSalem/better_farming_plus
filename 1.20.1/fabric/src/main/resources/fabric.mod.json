@@ -1,35 +1,35 @@
 {
     "schemaVersion": 1,
-    "id": "better_farming_plus",
+    "id": "${mod_id}",
     "version": "${version}",
     "name": "${mod_name}",
     "description": "${description}",
     "authors": [
-        "NAIZO"
+        "${mod_author}"
     ],
     "contact": {
-        "homepage": "https://www.nightbeam.cloud"
+        "homepage": "https://github.com/MeherBenSalem/better_farming_plus",
+        "sources": "https://github.com/MeherBenSalem/better_farming_plus",
+        "issues": "https://github.com/MeherBenSalem/better_farming_plus/issues"
     },
     "license": "${license}",
-    "icon": "assets/better_farming_plus/textures/logo.png",
+    "icon": "logo.png",
     "environment": "*",
     "entrypoints": {
         "main": [
-            "tn.nightbeam.betterfarmingplus.BetterFarmingPlusModFabric"
+            "tn.nightbeam.betterfarmingplus.fabric.BetterFarmingPlusFabric"
         ],
         "client": [
-            "tn.nightbeam.betterfarmingplus.BetterFarmingPlusModFabricClient"
+            "tn.nightbeam.betterfarmingplus.fabric.BetterFarmingPlusFabricClient"
         ]
     },
     "mixins": [
-        "better_farming_plus.mixins.json",
-        "better_farming_plus.fabric.mixins.json"
+        "${mod_id}.fabric.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=0.14",
+        "fabricloader": ">=${fabric_loader_version}",
         "fabric-api": "*",
         "minecraft": "${minecraft_version}",
-        "java": ">=17",
-        "jauml": "*"
+        "java": ">=${java_version}"
     }
 }

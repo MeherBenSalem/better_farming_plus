@@ -19,6 +19,12 @@ jobs:
             java: "17"
           - folder: "1.21.1"
             java: "21"
+          - folder: "26.1.2"
+            java: "25"
+          - folder: "26.2"
+            java: "25"
+          - folder: "26.3"
+            java: "25"
     defaults:
       run:
         working-directory: ${{ matrix.folder }}

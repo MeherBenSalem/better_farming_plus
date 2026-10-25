@@ -59,19 +59,19 @@ repositories {
 
 sourcesJar {
     from(rootProject.file('../LICENSE')) {
-        into 'META-INF'
+        rename { "${it}_${mod_id}" }
     }
     from(rootProject.file('../NOTICE')) {
-        into 'META-INF'
+        rename { "${it}_${mod_id}" }
     }
 }
 
 jar {
     from(rootProject.file('../LICENSE')) {
-        into 'META-INF'
+        rename { "${it}_${mod_id}" }
     }
     from(rootProject.file('../NOTICE')) {
-        into 'META-INF'
+        rename { "${it}_${mod_id}" }
     }
 
     manifest {
@@ -102,13 +102,11 @@ processResources {
             'description'                  : project.description,
             'neoforge_version'             : neoforge_version,
             'neoforge_loader_version_range': neoforge_loader_version_range,
-            "forge_version": forge_version,
-            "forge_loader_version_range": forge_loader_version_range,
             'credits'                      : credits,
             'java_version'                 : java_version
     ]
 
-    filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/mods.toml', 'META-INF/neoforge.mods.toml', '*.mixins.json']) {
+    filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/neoforge.mods.toml', '*.mixins.json']) {
         expand expandProps
     }
     inputs.properties(expandProps)

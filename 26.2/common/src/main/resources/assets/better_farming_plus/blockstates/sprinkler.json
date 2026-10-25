@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "better_farming_plus:block/sprinkler"
+    },
+    "active=true": {
+      "model": "better_farming_plus:block/sprinkler"
+    }
+  }
+}

@@ -34,3 +34,6 @@ Thumbs.db
 **/*.mcreator
 **/mcreator.gradle
 **/elements/
+
+# Marketing render scratch
+marketing/source/.render-*.html

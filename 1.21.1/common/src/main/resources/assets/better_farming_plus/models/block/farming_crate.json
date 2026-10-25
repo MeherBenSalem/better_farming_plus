@@ -1,8 +1,6 @@
 {
-  "parent": "block/cube_all",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "better_farming_plus:block/crate",
-    "particle": "better_farming_plus:block/crate"
-  },
-  "render_type": "solid"
+    "all": "better_farming_plus:block/crate"
+  }
 }

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "aea"
+  ],
+  "key": {
+    "a": "#minecraft:planks",
+    "b": "minecraft:redstone_block",
+    "c": "minecraft:comparator",
+    "d": "minecraft:diamond_hoe",
+    "e": "minecraft:chest"
+  },
+  "result": {
+    "id": "better_farming_plus:farming_crate",
+    "count": 1
+  }
+}
