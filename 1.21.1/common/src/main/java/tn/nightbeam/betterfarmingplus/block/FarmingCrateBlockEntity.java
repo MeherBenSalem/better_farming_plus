@@ -37,10 +37,13 @@ public class FarmingCrateBlockEntity extends BaseContainerBlockEntity implements
     public static final int STATUS_WORKING = 1;
     public static final int STATUS_FULL = 2;
     private static final int[] SLOTS = IntStream.range(0, SIZE).toArray();
+    /** How long the screen keeps saying "Harvesting" after the last harvest (10 seconds). */
+    private static final long WORKING_TICKS = 200;
 
     private NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
     private int harvested;
     private int status = STATUS_IDLE;
+    private long lastHarvest = Long.MIN_VALUE / 2;
 
     /** Synced to the open menu: harvested count (low and high 16 bits), status, radius. */
     private final ContainerData data = new ContainerData() {
@@ -105,7 +108,10 @@ public class FarmingCrateBlockEntity extends BaseContainerBlockEntity implements
                         4, 0.3, 0.3, 0.3, 0.0);
             }
         }
-        status = harvested > before ? STATUS_WORKING : full ? STATUS_FULL : STATUS_IDLE;
+        if (harvested > before) {
+            lastHarvest = level.getGameTime();
+        }
+        status = full ? STATUS_FULL : level.getGameTime() - lastHarvest < WORKING_TICKS ? STATUS_WORKING : STATUS_IDLE;
         if (harvested != before) {
             setChanged();
         }

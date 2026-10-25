@@ -63,31 +63,31 @@ public class SprinklerBlock extends BaseEntityBlock {
     @Override
     public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
         if (level.isClientSide()) {
-            return null;
+            return createTickerHelper(type, ModContent.SPRINKLER_ENTITY.get(), (tickLevel, pos, tickState, sprinkler) -> spray(tickLevel, pos, tickState));
         }
         return createTickerHelper(type, ModContent.SPRINKLER_ENTITY.get(),
                 (tickLevel, pos, tickState, sprinkler) -> sprinkler.serverTick((ServerLevel) tickLevel, pos, tickState));
     }
 
-    /** The spray: droplets fanning out from the head and falling over the watered square. */
-    @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (!state.getValue(ACTIVE)) {
+    /** The spray, on the client: an arc of droplets from the nozzle and drops falling over the watered square. */
+    private static void spray(Level level, BlockPos pos, BlockState state) {
+        if (!state.getValue(ACTIVE) || level.getGameTime() % 2 != 0) {
             return;
         }
+        RandomSource random = level.getRandom();
         double x = pos.getX() + 0.5;
-        double y = pos.getY() + 0.85;
+        double y = pos.getY() + 0.9;
         double z = pos.getZ() + 0.5;
-        for (int i = 0; i < 6; i++) {
-            double angle = random.nextDouble() * Math.PI * 2;
-            double speed = 0.15 + random.nextDouble() * 0.2;
-            level.addParticle(ParticleTypes.SPLASH, x, y, z, Math.cos(angle) * speed, 0.25, Math.sin(angle) * speed);
+        double turn = level.getGameTime() * 0.35;
+        for (int i = 0; i < 3; i++) {
+            double angle = turn + i * (Math.PI * 2 / 3) + random.nextDouble() * 0.4;
+            double speed = 0.18 + random.nextDouble() * 0.12;
+            // A splash with no vertical speed flies out along its horizontal speed in an arc.
+            level.addParticle(ParticleTypes.SPLASH, x, y, z, Math.cos(angle) * speed, 0.0, Math.sin(angle) * speed);
         }
         int radius = Math.max(1, FarmingConfig.get().sprinkler().radius());
-        for (int i = 0; i < 4; i++) {
-            double dx = (random.nextDouble() * 2 - 1) * (radius + 0.5);
-            double dz = (random.nextDouble() * 2 - 1) * (radius + 0.5);
-            level.addParticle(ParticleTypes.FALLING_WATER, x + dx, y + 0.6 + random.nextDouble() * 0.4, z + dz, 0, 0, 0);
-        }
+        double dx = (random.nextDouble() * 2 - 1) * (radius + 0.5);
+        double dz = (random.nextDouble() * 2 - 1) * (radius + 0.5);
+        level.addParticle(ParticleTypes.FALLING_WATER, x + dx, y + 0.4 + random.nextDouble() * 0.6, z + dz, 0, 0, 0);
     }
 }
