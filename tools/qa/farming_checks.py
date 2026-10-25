@@ -392,9 +392,10 @@ def main():
     ap.add_argument('--client', action='store_true')
     ap.add_argument('--ws', default='')
     ap.add_argument('--loader', default='')
+    ap.add_argument('--minecraft', default='', help='Minecraft version for NBT syntax when there is no --ws (production servers)')
     ap.add_argument('--shots')
     ARGS = ap.parse_args()
-    s = Server(ARGS.port, legacy=ARGS.ws == '1.20.1')
+    s = Server(ARGS.port, legacy=(ARGS.minecraft or ARGS.ws) == '1.20.1')
     s.many([
         'forceload add -16 -16 140 220', 'time set noon', 'weather clear',
     ])
