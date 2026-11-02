@@ -38,3 +38,9 @@ Thumbs.db
 # Marketing render scratch
 marketing/source/.render-*.html
 **/logs/
+
+build/
+out/
+target/
+run/
+runs/
