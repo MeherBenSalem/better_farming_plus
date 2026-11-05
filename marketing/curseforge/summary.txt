@@ -1,1 +1,1 @@
-Right-click harvest that replants with a seed from the drops, hoes that sweep up to 7x7, a Sprinkler that waters and grows your field, a Farming Crate that harvests and stores it, and no trampling. Fabric, NeoForge, Forge.
+Right-click harvest that replants, hoes that sweep up to 7x7, a Sprinkler, a Farming Crate that harvests and stores your field, and no more trampling.
