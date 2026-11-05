@@ -1,5 +1,9 @@
 ![Better Farming++](https://raw.githubusercontent.com/MeherBenSalem/better_farming_plus/main/marketing/images/banner.png)
 
+**[Discord](https://discord.gg/TJc3CxR4jK) · [The modpack](https://www.curseforge.com/minecraft/modpacks/remnants-ashen-legacy) · [Support NightBeam](https://nightbeam.dev/support) · [NightBeam Pro](https://nightbeam.dev/memberships) · [All projects](https://nightbeam.dev/projects)**
+
+> **Featured in [Remnants: Ashen Legacy](https://www.curseforge.com/minecraft/modpacks/remnants-ashen-legacy)**, NightBeam's story-driven soulslike RPG modpack.
+
 **A farm that runs itself, and farming by hand that finally feels good.** Right-click a ripe crop to harvest it and
 replant it with a seed from its own drops. Swing a better hoe to take a whole patch at once. Drop a **Sprinkler** into
 the field to keep it watered and growing, and a **Farming Crate** to harvest, replant and store everything around it.
@@ -54,7 +58,7 @@ the field.
 
 - Once a second it harvests every ripe crop in the **9×9** square around it, on its own layer and one above and below.
 - Each crop is replanted with one seed taken from its own drops; the rest goes into the crate's 27 slots.
-- A crop is only harvested when all of its drops fit, so a full crate **leaves the field standing instead of losing
+- A crop is harvested just when all of its drops fit, so a full crate **leaves the field standing instead of losing
   items**. It never picks up items that are lying around.
 - Hoppers and pipes take from it on every side; nothing can be pushed in. Comparators read how full it is.
 - Its screen shows how many crops it has harvested and whether it is harvesting, full or waiting for ripe crops.
@@ -75,7 +79,7 @@ the field.
 
 - Works on wheat, carrots, potatoes, beetroots, nether wart and cocoa, on modded crops that extend the vanilla crop
   block, and on anything in `#better_farming_plus:harvestable`.
-- Only ripe crops are harvested; young ones in a sweep stay. Sneak to take a single crop.
+- Ripe crops are the ones harvested; young ones in a sweep stay. Sneak to take a single crop.
 - Drops are rolled with your tool, so Fortune counts. The hoe loses 1 durability per crop.
 - One seed from the drops replants the crop (cocoa keeps its side of the log).
 
@@ -93,7 +97,7 @@ put another pack above it in the Resource Packs screen.
 
 - **No trampling**: by default no player or mob tramples farmland (the fall still hurts). Set `"trampling"` to
   `"with_tool"` for the 0.5 rule or `"vanilla"` to turn protection off.
-- **`config/better_farming_plus.json`**, written with comments on first start: harvest tools, sweep sizes per item or
+- **`config/better_farming_plus.json`**, written with comments at startup: harvest tools, sweep sizes per item or
   item tag, tool wear, the crate's and the sprinkler's area and timing, the growth chance, whether sprinklers need
   water, and the indicator pack.
 - **Block tags** for modpacks: `#better_farming_plus:harvestable`, `#better_farming_plus:not_harvestable` and
@@ -150,4 +154,14 @@ hidden under the field.*
 
 ![](https://raw.githubusercontent.com/MeherBenSalem/better_farming_plus/main/marketing/images/divider.png)
 
-[Discord](https://discord.gg/SAmd9fhNhr) · [Source and issues](https://github.com/MeherBenSalem/better_farming_plus) · [Support us](https://nightbeam.dev/support) · Made by NightBeam Studio
+---
+
+### More from NightBeam Studio
+
+- **[Remnants: Ashen Legacy](https://www.curseforge.com/minecraft/modpacks/remnants-ashen-legacy)**: the story-driven soulslike RPG modpack built on NightBeam's mods
+- **[Premium server plugins](https://nightbeam.dev/store)**: anti-cheat, ranked PvP, SMP setups and more on BuiltByBit
+- **[NightBeam Pro](https://nightbeam.dev/memberships)**: the model library and NightBeam Forge credits, from $5 a month
+- **[Discord](https://discord.gg/TJc3CxR4jK)**: support, bug reports, suggestions and early looks
+- **[Support NightBeam](https://nightbeam.dev/support)**: help keep every mod free
+
+**Follow:** [YouTube](https://www.youtube.com/@nightbeamstudio) · [Instagram](https://www.instagram.com/nightbeamstudio/) · [X](https://x.com/NightBeamLLC) · [Facebook](https://www.facebook.com/profile.php?id=61574823331471) · [Source and issues](https://github.com/MeherBenSalem/better_farming_plus)
