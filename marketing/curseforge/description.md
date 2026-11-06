@@ -1,6 +1,6 @@
 ![Better Farming++](https://raw.githubusercontent.com/MeherBenSalem/better_farming_plus/main/marketing/images/banner.png)
 
-**[Discord](https://discord.gg/TJc3CxR4jK) · [Source and issues](https://github.com/MeherBenSalem/better_farming_plus)**
+**[Docs](https://nightbeam.dev/docs/better-farming-plus) · [Discord](https://discord.gg/TJc3CxR4jK) · [Source and issues](https://github.com/MeherBenSalem/better_farming_plus)**
 
 **A farm that runs itself, and farming by hand that finally feels good.** Right-click a ripe crop to harvest it and
 replant it with a seed from its own drops. Swing a better hoe to take a whole patch at once. Drop a **Sprinkler** into
