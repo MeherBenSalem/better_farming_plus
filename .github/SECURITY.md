@@ -2,7 +2,12 @@
 
 ## Supported versions
 
-Security fixes are applied to the latest release on `main` for the actively maintained Minecraft versions in this repository (`1.20.1` and `1.21.1`).
+Security fixes are applied to the latest release on `main` for the actively maintained Minecraft targets:
+
+- Minecraft 1.20.1 (Fabric, Forge)
+- Minecraft 1.21.1 (Fabric, NeoForge)
+- Minecraft 26.2 (Fabric, NeoForge)
+- Minecraft 26.3 (Fabric, NeoForge)
 
 Older tagged releases may not receive backports.
 
@@ -15,7 +20,7 @@ Do not open a public issue or pull request that includes a working exploit befor
 
 Include:
 
-- Affected Minecraft / loader version (`1.20.1` Forge or `1.21.1` NeoForge)
+- Affected Minecraft version and loader (Fabric / Forge / NeoForge)
 - Mod version
 - Steps to reproduce
 - Impact assessment if known

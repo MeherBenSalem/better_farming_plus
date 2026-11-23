@@ -44,3 +44,9 @@ out/
 target/
 run/
 runs/
+
+# Root build and publish (as in the NightBeam reference repos)
+dist/
+__pycache__/
+!gradle/wrapper/gradle-wrapper.jar
+!**/gradle/wrapper/gradle-wrapper.jar

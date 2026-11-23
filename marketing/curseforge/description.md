@@ -7,7 +7,7 @@ replant it with a seed from its own drops. Swing a better hoe to take a whole pa
 the field to keep it watered and growing, and a **Farming Crate** to harvest, replant and store everything around it.
 Nobody tramples your farmland any more, and a marker shows which crops are ready.
 
-Fabric and NeoForge (Forge on 1.20.1) · Minecraft 1.20.1, 1.21.1, 26.1.2, 26.2 and 26.3 · install on the server and
+Fabric and NeoForge (Forge on 1.20.1) · Minecraft 1.20.1, 1.21.1, 26.2 and 26.3 · install on the server and
 clients · no extra library needed
 
 ![What's new in 1.0](https://raw.githubusercontent.com/MeherBenSalem/better_farming_plus/main/marketing/images/header-whats-new.png)
@@ -25,7 +25,7 @@ Version 1.0 rebuilds the mod. Here's what changed from 0.5:
 - **No trampling**, by players or mobs
 - **Harvest indicators** as a built-in resource pack you can switch off in the Resource Packs screen
 - A **commented config** (0.5 settings are migrated) and **no JaUML dependency**
-- Now for **Minecraft 26.1.2, 26.2 and 26.3**; the 1.21.1 crate recipe and drop work again
+- Now for **Minecraft 26.2 and 26.3**; the 1.21.1 crate recipe and drop work again
 - Your 0.5 crates keep their contents: every id is unchanged
 
 ![A farm that runs itself](https://raw.githubusercontent.com/MeherBenSalem/better_farming_plus/main/marketing/images/header-loop.png)
@@ -110,7 +110,6 @@ Pick the file that matches **both** your Minecraft version and your loader:
 |-----------|---------------------------|------------------|
 | 1.20.1 | `better_farming_plus-fabric-1.20.1-1.0.0.jar` | `better_farming_plus-forge-1.20.1-1.0.0.jar` (Forge 47.4.0+) |
 | 1.21.1 | `better_farming_plus-fabric-1.21.1-1.0.0.jar` | `better_farming_plus-neoforge-1.21.1-1.0.0.jar` (NeoForge 21.1.219+) |
-| 26.1.2 | `better_farming_plus-fabric-26.1.2-1.0.0.jar` | `better_farming_plus-neoforge-26.1.2-1.0.0.jar` |
 | 26.2 | `better_farming_plus-fabric-26.2-1.0.0.jar` | `better_farming_plus-neoforge-26.2-1.0.0.jar` (NeoForge 26.2.0.93+) |
 | 26.3 | `better_farming_plus-fabric-26.3-1.0.0.jar` | `better_farming_plus-neoforge-26.3-1.0.0.jar` |
 
