@@ -131,11 +131,11 @@ shared version and the metadata ranges. `tools/build_release.sh` does the same b
 ## Releasing
 
 CI (`.github/workflows/ci.yml`) builds all 8 jars on every push to `main` that touches the build. Publishing to
-Modrinth and CurseForge is `.github/workflows/publish.yml`, run by hand (`version`, `dry_run`) or by a `v*.*.*` tag;
+CurseForge is `.github/workflows/publish.yml`, run by hand (`version`, `dry_run`) or by a `v*.*.*` tag;
 it never runs on a plain push. It refuses a second release of the mod on the same day (Africa/Tunis), takes the jars
 from `releases/`, the GitHub Release or a build from source, and fails unless exactly the 8 jars are found. It needs
-the secrets `MODRINTH_TOKEN`, `CURSEFORGE_TOKEN`, `CURSEFORGE_API_KEY` and the variables `MODRINTH_ID`,
-`CURSEFORGE_ID`.
+the secrets `CURSEFORGE_TOKEN` (upload token) and `CURSEFORGE_API_KEY` (Core API key) and the variable
+`CURSEFORGE_ID`. NightBeam publishes to CurseForge only; the Modrinth page stays up but gets no new versions.
 
 ## Tools
 
@@ -144,7 +144,7 @@ the secrets `MODRINTH_TOKEN`, `CURSEFORGE_TOKEN`, `CURSEFORGE_API_KEY` and the v
 - [`tools/gen_textures.py`](tools/gen_textures.py): draws the sprinkler textures and the crate screen.
 - [`tools/qa/`](tools/qa): dev servers and a real game client under Xvfb. `farming_checks.py` checks every feature in
   game, `run_matrix.sh` runs it on every build, `marketing_shots.py` captures the listing screenshots.
-- [`marketing/`](marketing): the CurseForge and Modrinth descriptions, listing images and how to regenerate them.
+- [`marketing/`](marketing): the CurseForge description, listing images and how to regenerate them.
 
 ## Links
 
